@@ -133,20 +133,10 @@ const inquiryNodes = [
                 text: 'give the begger money',
                 requiredState: (currentState) => currentState.money,
                 setState: {money: false, helpedBegger: true},
-                nextInquiry: 3
+                nextInquiry: 4
             },
             {
                 text: 'ignore the begger',
-                nextInquiry: 3
-            }
-        ]
-    },
-    {
-        id: 3,
-        text: 'the begger will remeber that.',
-        responses: [
-            {
-                text: 'continue',
                 nextInquiry: 4
             }
         ]

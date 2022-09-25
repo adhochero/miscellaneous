@@ -130,8 +130,9 @@ header{
 .content{
     box-shadow: 8px 12px 12px rgba(0, 0, 0, 0.075);
     margin: 20px 0;
-    width: 400px;
-    background-color: white;
+    width: 100%;
+    max-width: 400px;
+    background-color: rgb(64, 58, 68);
     border-radius: 20px;
     padding: 4px;
 }
@@ -140,6 +141,7 @@ header{
     margin: 8px;
     font-size: 18px;
     text-align: center;
+    color: white;
 }
 
 #response__options{
@@ -156,10 +158,10 @@ header{
 .response{
     cursor: pointer;
     margin: 2px;
-    border: solid 2px black;
+    border: solid 2px white;
     border-radius: 20px;
     padding: 8px;
-    color: black;
+    color: white;
     font-size: 14px;
     text-align: center;
 }
