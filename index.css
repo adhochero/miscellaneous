@@ -124,7 +124,7 @@ header{
     margin: 20px 0;
     width: 100%;
     max-width: 400px;
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 250px);
     max-height: 600px;
     background-color: rgb(64, 58, 68);
     border-radius: 20px;
