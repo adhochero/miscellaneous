@@ -1,34 +1,3 @@
-//loading stuff
-const blockRef = document.querySelector(`.wrapper`);
-let data;
-
-async function fetchBlockData(){
-    const response = await fetch(`https://ghibliapi.herokuapp.com/films`);
-    data = await response.json();
-    console.log(data); //check to get path to the array (in this case ".data")
-}
-
-fetchBlockData();
-
-function renderBlock(){ //called onclick
-    blockRef.innerHTML = data.map(i => blockHTML(i)).join(``); //.join(``) gets rid of commas
-}
-
-function removeBlock(){ //called onclick
-    blockRef.innerHTML = data.map(i => ``).join(``); //.join(``) gets rid of commas
-}
-
-function blockHTML(i){
-    return `
-    <div class="block">
-        <div class="block__content">
-                <img class="block__content--cover" src="${i.image}" alt="">
-                <div class="block__content--fill"></div>
-                <p class="block__content--description">${i.description}</p>
-        </div>
-    </div>`
-}
-
 //eye stuff
 const fallOffMultiplier = 45 //lower value = more range.
 
@@ -77,24 +46,20 @@ function showInquiryNode(inquiryNodeIdex){
 
     inquiryNode.responses.forEach(response =>{
         if(showResponse(response)){
-            const responseObj = document.createElement('div');
-            responseObj.innerHTML = responseHTML(response);
-            responseObj.classList.add('response__obj');
-            responseObj.addEventListener('click', () => selectRespons(response));
-            responseOptionsElement.appendChild(responseObj);
+            const responseElement = document.createElement('div');
+            responseElement.innerHTML = response.text;
+            responseElement.classList.add('response');
+            responseElement.addEventListener('click', () => selectResponse(response));
+            responseOptionsElement.appendChild(responseElement);
         }
     })
-}
-
-function responseHTML(i){
-    return `<div class="response">${i.text}</div>`
 }
 
 function showResponse(response){
     return response.requiredState == null || response.requiredState(state)
 }
 
-function selectRespons(response){
+function selectResponse(response){
     const nextInquiryNodeID = response.nextInquiry;
     if(nextInquiryNodeID <= 0){
         return startGame();
